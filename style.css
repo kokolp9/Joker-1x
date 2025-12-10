@@ -1,0 +1,246 @@
+:root {
+    --main-color: #00ff99; /* أخضر نيون */
+    --accent-color: #ff3366; /* أحمر وردي نيون */
+    --text-color: #f0f0f0;
+    --bg-dark: #0a0a0a; /* خلفية سوداء عميقة */
+    --input-bg: #1c1c1c;
+    
+    /* ألوان جديدة للخلفية المتحركة */
+    --gradient-color-1: #0D001F; /* بنفسجي داكن جداً */
+    --gradient-color-2: #000F1F; /* أزرق داكن جداً */
+    --gradient-color-3: #1A0033; /* بنفسجي غامق */
+}
+
+/* ---------------------------------------------------- */
+/* 1. خلفية الجسم (Body Background) الجديدة والجذابة */
+/* ---------------------------------------------------- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    direction: rtl; 
+    
+    /* الخلفية الجديدة: تدرج لوني عميق وحركي */
+    background: linear-gradient(
+        -45deg, 
+        var(--gradient-color-1), 
+        var(--gradient-color-2), 
+        var(--gradient-color-3), 
+        var(--bg-dark)
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 20s ease infinite; /* حركة أبطأ وأكثر سلاسة */
+}
+
+/* الرسوم المتحركة لتحريك تدرج الخلفية */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ---------------------------------------------------- */
+/* 2. الأيقونة العائمة (Floating Icon) - تم حذفها نهائياً */
+/* ---------------------------------------------------- */
+#floating-icon {
+    display: none !important;
+}
+
+/* ---------------------------------------------------- */
+/* 3. واجهة التطبيق الرئيسية (Main Interface) */
+/* ---------------------------------------------------- */
+#app-interface {
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    min-height: 600px;
+    
+    /* تصميم داخلي ليكون صندوق التطبيق معزولاً ولامعاً */
+    background-image: none;
+    background-color: rgba(10, 10, 10, 0.95);
+    
+    border: 1px solid rgba(0, 255, 153, 0.5); /* حدود نيون خفيفة */
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(0, 255, 153, 0.2); /* توهج خارجي خفيف */
+    overflow: hidden;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 500;
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* 4. إزالة طبقة التعتيم (لم تعد ضرورية) */
+#app-interface::before {
+    display: none;
+}
+
+
+/* 5. تصميم العناصر المشتركة */
+#login-screen, #predictions-screen {
+    position: relative;
+    z-index: 10;
+    padding: 10px;
+}
+
+/* الشعار - تأثير نيون */
+.logo-title {
+    color: var(--main-color);
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 
+        0 0 10px var(--main-color),
+        0 0 25px var(--main-color);
+    font-size: 2.7em; 
+    letter-spacing: 2px;
+}
+
+/* 6. أزرار السيرفرات */
+.server-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.server-btn {
+    flex: 1;
+    margin: 0 5px;
+    padding: 12px 0; 
+    border: 2px solid var(--accent-color); 
+    border-radius: 10px; 
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: rgba(28, 28, 28, 0.9);
+    color: var(--text-color);
+}
+
+.server-btn:hover { 
+    transform: scale(1.05); 
+    box-shadow: 0 0 10px var(--accent-color), 0 0 20px rgba(255, 51, 102, 0.4);
+    background-color: rgba(40, 40, 40, 0.9);
+}
+
+/* 7. تأثير الاتصال الجاري */
+.connecting {
+    background-color: var(--accent-color) !important;
+    color: white !important;
+    animation: flash 0.5s infinite alternate;
+    box-shadow: 0 0 15px var(--accent-color); 
+}
+
+#connection-status {
+    text-align: center;
+    color: var(--accent-color);
+    font-weight: bold;
+    margin-bottom: 20px;
+    min-height: 20px;
+    text-shadow: 0 0 8px var(--accent-color);
+}
+
+/* 8. حقول الإدخال */
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-color);
+    font-size: 0.9em;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-bottom: 2px solid var(--main-color); 
+    border-radius: 4px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    box-sizing: border-box;
+    font-size: 1.1em;
+    transition: border-bottom-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    outline: none;
+    border-bottom: 2px solid var(--accent-color); 
+    box-shadow: 0 5px 15px rgba(255, 51, 102, 0.2); 
+}
+
+
+/* 9. أزرار الإجراءات */
+#login-btn, #get-code-btn, #new-round-btn, #logout-btn {
+    width: 100%;
+    padding: 18px; 
+    border: none;
+    border-radius: 12px; 
+    font-size: 1.2em; 
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 18px;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+/* زر تسجيل الدخول */
+#login-btn {
+    background-color: var(--main-color);
+    color: var(--bg-dark);
+    box-shadow: 0 0 10px var(--main-color), 0 0 40px rgba(0, 255, 153, 0.6); 
+}
+
+#login-btn:hover {
+    background-color: #00e688;
+    transform: translateY(-2px); 
+    box-shadow: 0 0 15px var(--main-color), 0 0 50px var(--main-color);
+}
+
+/* زر استلام كود التفعيل */
+#get-code-btn {
+    background-color: #333;
+    color: white;
+    border: 1px solid #777;
+}
+
+#get-code-btn:hover {
+    background-color: #555;
+    transform: translateY(-1px);
+}
+
+/* 10. مخرج التوقع */
+#prediction-output {
+    background-color: #050505;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 0 20px var(--accent-color);
+    font-size: 3.5em; 
+    color: var(--main-color);
+    text-shadow: 
+        0 0 10px var(--main-color),
+        0 0 30px var(--main-color);
+    border-radius: 10px; 
+    padding: 30px;
+    text-align: center;
+    min-height: 150px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#new-round-btn {
+    background-color: var(--accent-color);
+    color: white;
+    box-shadow: 0 0 10px var(--accent-color), 0 0 30px rgba(255, 51, 102, 0.5);
+}
+
+#logout-btn {
+    background-color: #444;
+    color: white;
+}
