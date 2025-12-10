@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOKER CRASH </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="floating-icon" onclick="toggleInterface()">
+        <img src="https://via.placeholder.com/60/000000/FFFFFF?text=J" alt="App Icon">
+    </div>
+
+    <div id="app-interface">
+        
+        <div class="animation-background"></div>
+
+        <div id="login-screen">
+            
+            <h1 class="logo-title">JOKER CRASH</h1>
+            
+            <div class="server-buttons">
+                <button class="server-btn" id="1xbet-btn">1XBET</button>
+                <button class="server-btn" id="melbet-btn">MELBET</button>
+                <button class="server-btn" id="lienbet-btn">LIENBET</button>
+            </div>
+
+            <p id="connection-status"></p>
+
+            <div class="input-group">
+                <label for="user-id">أدخل ID اللاعب (10 أرقام):</label>
+                <input type="text" id="user-id" maxlength="10" placeholder="0000000000">
+            </div>
+
+            <div class="input-group">
+                <label for="activation-code">أدخل كود التفعيل الذي تم استلامه:</label>
+                <input type="password" id="activation-code" placeholder="**********"> 
+                </div>
+
+            <button id="login-btn">تسجيل الدخول</button>
+
+            <button id="get-code-btn">استلام كود التفعيل</button>
+        </div>
+
+        <div id="predictions-screen" class="hidden">
+            <h2>📊 توقعات دور الطائرة 📈</h2>
+            
+            <div id="prediction-output">
+                </div>
+            
+            <button id="new-round-btn">دور جديد</button>
+            <button id="logout-btn">تسجيل الخروج</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
